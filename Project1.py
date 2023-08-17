@@ -19,4 +19,7 @@ data = pd.read_csv('./file.csv')
 #print(data.rename(columns= {'Weather' :'Weather Condition '}))
 #print(data.Visibility_km.mean())
 #print(data.Press_kPa.std())
-
+#print(data['Weather'].value_counts())
+#print(data[data['Weather'].str.contains('Snow')])
+#print(data['Wind Speed_km/h']> 24) and (data['Visibility_km']==25)
+#print(data.groupby('Weather Condition').mean())
