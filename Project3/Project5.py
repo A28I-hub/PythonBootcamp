@@ -1,0 +1,46 @@
+import numpy as np
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+Diwali = pd.read_csv('./assets/Diwali Sales Data.csv', encoding='unicode_escape')
+#print(Diwali)
+Diwali.drop(['Status','unnamed1'], axis=1 , inplace= True)
+#print(Diwali)
+Diwali.isnull().sum()
+Diwali.dropna(inplace=True)
+#print(Diwali.isnull().sum())
+#print(Diwali.info())
+Diwali['Amount'] = Diwali['Amount'].astype(int)
+#print(Diwali.columns)
+# ax = sns.countplot(x = 'Gender',data = Diwali)
+# for bars in ax.containers:
+#     ax.bar_label(bars)
+# print(ax)
+# plt.show()
+#sales_gen = Diwali.groupby(['Gender'], as_index = False )['Amount'].sum().sort_values(by='Amount', ascending = False)
+#sns.barplot(x='Gender', y='Amount',data= sales_gen)
+#plt.show()
+# az = sns.countplot(x ='Age Group', hue='Gender', data= Diwali)
+# for bars in az.containers:
+#     az.bar_label(bars)
+# plt.show() 
+# saleage_group = Diwali.groupby(['Age Group'], as_index= False)['Amount'].sum().sort_values(by = 'Amount', ascending = False)
+# sns.barplot(x= 'Age Group', y='Amount', data=Diwali)
+# plt.show()
+# sales_state= Diwali.groupby(['State'], as_index= False)['Orders'].sum().sort_values(by = 'Orders', ascending = False)
+# sns.set(rc={'figure.figsize': (15,5)})
+# sns.barplot(x ='State', y ='Orders',data= Diwali)
+# plt.show()
+# print(Diwali.head(20))
+# av = sns.countplot(x = 'Marital_Status', data=Diwali)   
+# for bar in av.containers:
+#     av.bar_label(bar)
+# plt.show()
+# ab = sns.set(rc={'figure.figsize': (20,5)})
+# # ab = sns.countplot(x = 'Occupation', data=Diwali )
+# # for bar in ab.containers:
+# #     ab.bar_label(bar)
+# # plt.show()
+state_sales = Diwali.groupby(['Occupation'], as_index= False)['Amount'].sum().sort_values(by='Amount',ascending=False)
+sns.barplot(x='Occupation', y='Amount',data=state_sales)
+plt.show()
